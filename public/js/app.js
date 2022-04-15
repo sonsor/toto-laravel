@@ -1948,8 +1948,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getExpireAt: function getExpireAt(data) {
       var timezone = moment__WEBPACK_IMPORTED_MODULE_2___default().tz.guess();
-      console.log("timezone :", timezone);
-      return moment__WEBPACK_IMPORTED_MODULE_2___default()(data).tz(timezone).format('YYYY-MM-DD hh:mm:ss A');
+      console.log("timezone :", timezone, data, new Date(data));
+      return moment__WEBPACK_IMPORTED_MODULE_2___default()(new Date(data)).tz('utc').format('YYYY-MM-DD hh:mm:ss A');
     }
   }
 });
