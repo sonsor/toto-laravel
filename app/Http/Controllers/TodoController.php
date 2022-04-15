@@ -16,7 +16,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = auth()->user()->todos()->orderBy('completed')->get();
+        $todos = Todo::orderBy('completed')->get();
         return Inertia::render('Dashboard/Index', ['todos' => $todos]);
     }
 
@@ -42,9 +42,9 @@ class TodoController extends Controller
         //dd($request->all());
         $postData = $this->validate($request, [
             'title' => 'required',
-            'description' => 'required',
+            'expire_at' => 'required',
         ]);
-        auth()->user()->todos()->create($request->all());
+        Todo::create($request->all());
         return redirect()->route('home');
     }
 
@@ -55,7 +55,6 @@ class TodoController extends Controller
      */
     public function show(Todo $todo)
     {
-//        dd($todo);
         return Inertia::render('show', ['tasks' => $todo]);
     }
 

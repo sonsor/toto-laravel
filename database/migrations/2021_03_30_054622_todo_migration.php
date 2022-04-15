@@ -16,9 +16,7 @@ class TodoMigration extends Migration
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamp('expire_at');
             $table->boolean('completed')->default(false);
             $table->timestamps();
         });

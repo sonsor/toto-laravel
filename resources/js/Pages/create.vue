@@ -11,15 +11,14 @@
                             <form @submit.prevent="HandleSubmit">
 
                                 <div class="form-group">
-                                    <label for="title">Name</label>
+                                    <label for="title">Wasif Name</label>
                                     <input type="text" name="title" id="title" class="form-control"
                                            placeholder="Enter Todo Name" v-model="todo.title" tabindex="1">
                                 </div>
                                 <div class="form-group">
-                                    <label for="description">Description</label>
-                                    <textarea name="description" id="description" placeholder="Enter Todo Description"
-                                              class="form-control" cols="30" rows="10" v-model="todo.description"
-                                              tabindex="2"></textarea>
+                                    <label for="expire_at">Expire At</label>
+                                    <input type="datetime-local" name="expire_at" id="expire_at" class="form-control"
+                                           placeholder="Select Date" v-model="todo.expire_at" tabindex="1">
                                 </div>
                                 <div class="form-group">
                                     <button class="btn btn-success" type="submit" tabindex="3">Save</button>

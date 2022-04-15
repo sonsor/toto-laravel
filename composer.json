@@ -13,7 +13,8 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
-        "tightenco/ziggy": "^1.0"
+        "tightenco/ziggy": "^1.0",
+        "ext-pdo_sqlite": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.9",

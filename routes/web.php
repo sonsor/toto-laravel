@@ -19,9 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::middleware('auth')->group(function (){
 
-    Route::get('/home',[TodoController::class,'index'])->name('home');
+Route::get('/',[TodoController::class,'index'])->name('home');
     Route::get('/show/{todo}',[TodoController::class,'show'])->name('show');
     Route::get('/toggle/{todo}',[TodoController::class,'toggle'])->name('toggle');
     Route::get('/edit/{todo}',[TodoController::class,'edit'])->name('edit');
@@ -29,6 +28,10 @@ Route::middleware('auth')->group(function (){
     Route::get('/create',[TodoController::class,'create']);
     Route::post('/save',[TodoController::class,'store']);
     Route::post('/update/',[TodoController::class,'update']);
+
+Route::middleware('auth')->group(function (){
+
+
 });
 
 Auth::routes();

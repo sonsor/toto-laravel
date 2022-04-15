@@ -29,8 +29,8 @@
                                     <div v-else>
                                         <inertia-link :href="$route('show',todo)"><p>{{ todo.title }}</p></inertia-link>
                                     </div>
+                                    <inertia-link :href="$route('show',todo)"><p>{{ getExpireAt(todo.expire_at) }}</p></inertia-link>
 
-                                    <inertia-link :href="$route('edit',todo)" class="fas fa-pen"></inertia-link>
                                     <inertia-link :href="$route('delete',todo)" class="fas fa-times"></inertia-link>
 
                                 </li>
@@ -47,6 +47,8 @@
 <script>
 import Layout from "../../Shared/layout";
 import Donebutton from "../../components/donebutton";
+import moment from "moment";
+
 
 export default {
     props: {
@@ -54,6 +56,11 @@ export default {
         'complete': String,
     },
     components: {Donebutton, Layout},
+    methods: {
+        getExpireAt(data) {
+            return moment(data).local().format('YYYY-MM-DD hh:mm:ss')
+        }
+    }
 }
 </script>
 <style>

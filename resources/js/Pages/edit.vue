@@ -16,10 +16,9 @@
                                            placeholder="Enter Todo Name" v-model="todo.title" tabindex="1" value="edits->title">
                                 </div>
                                 <div class="form-group">
-                                    <label for="description">Description</label>
-                                    <textarea name="description" id="description" placeholder="Enter Todo Description"
-                                              class="form-control" cols="30" rows="10" v-model="todo.description"
-                                              tabindex="2">{{edits['description']}}</textarea>
+                                    <label for="expire_at">Expire At</label>
+                                    <input type="datetime-local" name="expire_at" id="expire_at" class="form-control"
+                                           placeholder="Select Date" v-model="todo.expire_at" tabindex="1">
                                 </div>
                                 <div class="form-group">
                                     <button class="btn btn-success" type="submit" tabindex="3">Save</button>
@@ -46,12 +45,12 @@ export default {
         return {
             todo: {
                 title: '',
-                description: '',
+                expire_at: '',
             }
         }
     },
     created() {
-        this.todo=this.edits
+        this.todo = this.edits
     },
     methods: {
         SubmitMe:function () {
