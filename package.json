@@ -27,6 +27,7 @@
     "dependencies": {
         "@inertiajs/inertia": "^0.8.5",
         "@inertiajs/inertia-vue": "^0.5.5",
-        "moment": "^2.29.2"
+        "moment": "^2.29.2",
+        "moment-timezone": "^0.5.34"
     }
 }

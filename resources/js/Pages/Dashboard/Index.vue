@@ -48,6 +48,7 @@
 import Layout from "../../Shared/layout";
 import Donebutton from "../../components/donebutton";
 import moment from "moment";
+import "moment-timezone";
 
 
 export default {
@@ -58,6 +59,7 @@ export default {
     components: {Donebutton, Layout},
     methods: {
         getExpireAt(data) {
+            console.log("timezone :", moment.tz.guess())
             return moment(data).local().format('YYYY-MM-DD hh:mm:ss')
         }
     }
