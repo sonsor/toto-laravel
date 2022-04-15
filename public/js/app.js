@@ -1949,7 +1949,7 @@ __webpack_require__.r(__webpack_exports__);
     getExpireAt: function getExpireAt(data) {
       var timezone = moment__WEBPACK_IMPORTED_MODULE_2___default().tz.guess();
       console.log("timezone :", timezone, data, new Date(data));
-      return moment__WEBPACK_IMPORTED_MODULE_2___default()(new Date(data)).tz('utc').format('YYYY-MM-DD hh:mm:ss A');
+      return moment__WEBPACK_IMPORTED_MODULE_2___default().tz(data, 'utc').tz(timezone).format('YYYY-MM-DD hh:mm:ss A');
     }
   }
 });
@@ -1989,6 +1989,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Shared_layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Shared/layout */ "./resources/js/Shared/layout.vue");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var moment_timezone__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment-timezone */ "./node_modules/moment-timezone/index.js");
+/* harmony import */ var moment_timezone__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment_timezone__WEBPACK_IMPORTED_MODULE_2__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2025,6 +2035,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+
+window.moment = (moment__WEBPACK_IMPORTED_MODULE_1___default());
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Layout: _Shared_layout__WEBPACK_IMPORTED_MODULE_0__.default
@@ -2033,13 +2046,16 @@ __webpack_require__.r(__webpack_exports__);
     return {
       todo: {
         title: '',
-        description: ''
+        expire_at: ''
       }
     };
   },
   methods: {
     HandleSubmit: function HandleSubmit() {
-      this.$inertia.post('/save', this.todo);
+      console.log("this.todo.expire_at :", this.todo.expire_at);
+      this.$inertia.post('/save', _objectSpread(_objectSpread({}, this.todo), {}, {
+        expire_at: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.todo.expire_at).tz('utc').format('YYYY-MM-DD HH:mm:ss')
+      }));
     }
   }
 });

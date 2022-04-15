@@ -35,20 +35,26 @@
 
 <script>
 import Layout from "../Shared/layout";
-
+import moment from "moment";
+import "moment-timezone";
+window.moment = moment
 export default {
     components: {Layout},
     data() {
         return {
             todo: {
                 title: '',
-                description: '',
+                expire_at: '',
             }
         }
     },
     methods: {
         HandleSubmit() {
-            this.$inertia.post('/save', this.todo)
+            console.log("this.todo.expire_at :", this.todo.expire_at)
+            this.$inertia.post('/save', {
+                ...this.todo,
+                expire_at: moment(this.todo.expire_at).tz('utc').format('YYYY-MM-DD HH:mm:ss')
+            })
         }
     },
 

@@ -61,7 +61,7 @@ export default {
         getExpireAt(data) {
             const timezone = moment.tz.guess()
             console.log("timezone :", timezone, data, new Date(data))
-            return moment(new Date(data)).tz('utc').format('YYYY-MM-DD hh:mm:ss A')
+            return moment.tz(data, 'utc').tz(timezone).format('YYYY-MM-DD hh:mm:ss A')
         }
     }
 }
