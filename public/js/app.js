@@ -1947,8 +1947,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getExpireAt: function getExpireAt(data) {
-      console.log("timezone :", moment__WEBPACK_IMPORTED_MODULE_2___default().tz.guess());
-      return moment__WEBPACK_IMPORTED_MODULE_2___default()(data).tz(moment__WEBPACK_IMPORTED_MODULE_2___default().tz.guess()).format('YYYY-MM-DD hh:mm:ss');
+      var timezone = moment__WEBPACK_IMPORTED_MODULE_2___default().tz.guess();
+      console.log("timezone :", timezone);
+      return moment__WEBPACK_IMPORTED_MODULE_2___default()(data).tz(timezone).format('YYYY-MM-DD hh:mm:ss A');
     }
   }
 });

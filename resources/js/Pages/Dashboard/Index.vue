@@ -59,8 +59,9 @@ export default {
     components: {Donebutton, Layout},
     methods: {
         getExpireAt(data) {
-            console.log("timezone :", moment.tz.guess())
-            return moment(data).tz(moment.tz.guess()).format('YYYY-MM-DD hh:mm:ss')
+            const timezone = moment.tz.guess()
+            console.log("timezone :", timezone)
+            return moment(data).tz(timezone).format('YYYY-MM-DD hh:mm:ss A')
         }
     }
 }
